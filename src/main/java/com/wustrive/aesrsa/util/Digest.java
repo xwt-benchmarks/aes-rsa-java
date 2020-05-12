@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.checkerframework.checker.crypto.qual.AllowedAlgorithms;
+
 import org.apache.log4j.Logger;
 
 public class Digest {
@@ -136,7 +138,7 @@ public class Digest {
 	}
 
 
-	public static String digest(String aValue, String alg, String encoding) {
+	public static String digest(String aValue, @AllowedAlgorithms({"SHA-(224|256|384|512|512\\/224|512\\/256)"})String alg, String encoding) {
 		aValue = aValue.trim();
 		byte value[];
 		try {
